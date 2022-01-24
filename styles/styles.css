@@ -619,6 +619,7 @@ img {
 .footer-flex {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
 }
 
 .footer-logo {
@@ -663,7 +664,8 @@ img {
   margin-left: 70px;
 }
 
-.footer-sm h3 {
+.footer-sm h3,
+.label-email-sub {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.14;
@@ -704,6 +706,62 @@ img {
   background-color: var(--accent-color);
 }
 
+.label-email-sub {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.email-sub {
+  height: 50px;
+  width: 358px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  color: var(--third-text-color);
+  padding-left: 16px;
+}
+
+.email-sub::placeholder {
+  font-size: 16px;
+  line-height: 1.16;
+  letter-spacing: var(--primary-letter-spacing);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.email-sub-btn {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  padding: 0;
+  background-color: var(--btn-bgc-color);
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-left: 12px;
+}
+
+.sub-in {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  color: var(--third-text-color);
+}
+
+.email-sub-btn-icon {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  margin-left: 10px;
+}
+.btn-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------------Модалка----------- */
 .backdrop {
   position: fixed;
   top: 0;
@@ -730,31 +788,39 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  background-color: var(--third-bgc);
+  background-color: var(--primary-bgc);
   transition: transform var(--primary-trans-duration) var(--primary-cubic);
 }
 
 .icon-close {
   width: 18px;
   height: 18px;
+  color: currentColor;
 }
 
 .modal-close-btn {
   position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
   width: 30px;
   height: 30px;
+  background-color: var(--primary-bgc);
+  justify-content: center;
+  align-items: center;
+  top: 8px;
+  right: 8px;
+  color: #000000;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.modal-close-btn:focus,
+.modal-close-btn:hover {
+  fill: var(--accent-color);
+}
+
 .form {
   padding: 40px;
+  min-height: 581px;
 }
 
 .form-title {
@@ -769,11 +835,47 @@ img {
 
 .form-field {
   display: flex;
+  position: relative;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
-.form-field input {
-  margin-bottom: 10px;
+.form-input {
+  cursor: pointer;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 4px;
+  padding-left: 42px;
+  transition: border 250ms var(--primary-cubic);
+}
+
+.form-input:focus {
+  outline: none;
+  border: 1px solid var(--accent-color);
+}
+.form-input:focus + .form-icon {
+  fill: var(--accent-color);
+}
+
+.form-icon {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  bottom: 11px;
+  left: 12px;
+  transition: fill 250ms var(--primary-cubic);
+}
+
+.form-field-title {
+  color: var(--secondary-text-color);
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+}
+
+.comment {
+  margin-bottom: 20px;
 }
 
 .form-field-title {
@@ -785,7 +887,70 @@ img {
 }
 
 .comment {
+  padding-top: 12px;
+  padding-left: 16px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   resize: none;
+  max-height: 120px;
+  transition: border 250ms var(--primary-cubic);
+}
+
+.comment:focus {
+  outline: none;
+  border: 1px solid var(--accent-color);
+}
+
+.comment::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.policy-wrap {
+  margin-left: 12px;
+}
+
+.policy-wrap a {
+  color: var(--accent-color);
+}
+
+.policy-wrap input {
+  appearance: none;
+}
+
+.chekbox-label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-icon {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  border-radius: 2px;
+  border: 2px solid #000000;
+  margin-right: 8px;
+}
+
+.checkbox:checked + .checkbox-icon {
+  background-color: var(--accent-color);
+  background-image: url(../images/svg/icon-check.svg);
+  border-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-origin: border-box;
+}
+
+.form-btn {
+  display: block;
+  width: 200px;
+  height: 50px;
+  padding: 0;
+  background-color: var(--btn-bgc-color);
+  color: var(--third-text-color);
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
 }
